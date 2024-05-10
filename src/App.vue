@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import { IbLogo } from "@/shared/logo/";
+import IbHeader from "@/widgets/header/ui/IbHeader.vue";
 </script>
 
 <template>
-  <header v-show="$route.name === 'home'">
-    <ib-logo/>
-  </header>
+  <ib-header/>
 
   <RouterView />
 </template>
