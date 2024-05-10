@@ -19,7 +19,7 @@ export async function createServer(
 
     const manifest = isProd
         ? JSON.parse(
-            fs.readFileSync(resolve("dist/client/ssr-manifest.json"), "utf-8")
+            fs.readFileSync(resolve("dist/client/.vite/ssr-manifest.json"), "utf-8")
         )
         : {};
 
@@ -50,7 +50,7 @@ export async function createServer(
         });
         app.use(vite.middlewares);
     } else {
-        app.use((await import("compression")).default());
+        // app.use((await import("compression")).default());
         app.use(
             "/",
             (await import("serve-static")).default(resolve("dist/client"), {
