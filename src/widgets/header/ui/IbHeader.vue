@@ -7,7 +7,8 @@ const VISIBLE_ROUTES = [ROUTE_NAMES.HOME];
 </script>
 
 <template>
-  <header v-show="VISIBLE_ROUTES.includes($route.name)">
+<!--  <header v-show="VISIBLE_ROUTES.includes($route.name)">-->
+  <header v-show="true">
     <ib-logo/>
   </header>
 </template>
