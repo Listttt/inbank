@@ -1,1 +1,3 @@
-export * from './ui/IbHeader.vue';
+import IbHeader from './ui/IbHeader.vue';
+
+export { IbHeader }
