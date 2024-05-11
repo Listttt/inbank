@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import {RouterView} from "vue-router";
 import {IbHeader} from "@/widgets/header";
+import {IbContainer} from "@/widgets/container";
 
 </script>
 
 <template>
   <div class="column">
     <ib-header/>
-
-    <RouterView />
+    <ib-container/>
   </div>
 </template>
 
