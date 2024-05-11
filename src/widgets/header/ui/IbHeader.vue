@@ -26,16 +26,7 @@ const show = computed(() => {
 <style scoped>
 .ib-header {
   align-self: flex-start;
-  height: 112px;
-  padding: 24px 40px;
-
-  svg {
-    height: 100%;
-  }
-
-  @media (max-width: 770px) {
-    height: 72px;
-    padding: 16px;
-  }
+  height: clamp(4.5rem, 15.6vw - 3rem, 7rem);;
+  padding: clamp(1rem, 3.1vw - 0.5rem, 1.5rem) clamp(1rem, 4vw - 0.75rem, 2.5rem);
 }
 </style>

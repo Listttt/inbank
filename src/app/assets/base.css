@@ -71,6 +71,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/*TODO: check probably its should be placed not here */
 .ib-container {
   max-width: 1536px;
 }

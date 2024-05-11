@@ -3,6 +3,7 @@
 
 <template>
   <main>
-    HomePage
+    banner | image
+    calculator
   </main>
 </template>
