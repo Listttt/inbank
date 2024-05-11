@@ -1,22 +1,26 @@
 <script setup lang="ts">
 import {ROUTE_NAMES} from "@/shared/config";
 import {IbLogo} from "@/shared/logo";
-import {computed} from "vue";
+import {watch, ref, computed, reactive} from "vue";
 import {useRoute} from "vue-router";
-
-const { name } = useRoute();
 
 const VISIBLE_ROUTES: Array<ROUTE_NAMES> = [ROUTE_NAMES.HOME];
 
-const show = computed(() => {
-  return VISIBLE_ROUTES.includes(name as ROUTE_NAMES);
+let route = reactive({show: VISIBLE_ROUTES.includes(useRoute().name as ROUTE_NAMES)});
+watch(useRoute(), ({name}) => {
+  route.show = VISIBLE_ROUTES.includes(name as ROUTE_NAMES);
 })
+
+const show = computed(() => {
+  return route.show;
+})
+
 
 </script>
 
 <template>
   <header v-show="show">
-    <ib-logo/>
+    <ib-logo @click="$router.push('/test')"/>
   </header>
 </template>
 
