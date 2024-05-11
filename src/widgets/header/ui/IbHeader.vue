@@ -18,11 +18,24 @@ const show = computed(() => {
 </script>
 
 <template>
-  <header v-show="show">
+  <header class="ib-header" v-show="show">
     <ib-logo/>
   </header>
 </template>
 
 <style scoped>
+.ib-header {
+  align-self: flex-start;
+  height: 112px;
+  padding: 24px 40px;
 
+  svg {
+    height: 100%;
+  }
+
+  @media (max-width: 770px) {
+    height: 72px;
+    padding: 16px;
+  }
+}
 </style>
