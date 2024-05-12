@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {IbImage} from "@/shared/image";
-import {IbTranslatedText} from "@/entities/translated-text";
 import {IbCardWidget} from "@/widgets/card";
+import {IbCalculatorWidget} from "@/widgets/calculator";
 </script>
 
 <template>
@@ -15,6 +15,9 @@ import {IbCardWidget} from "@/widgets/card";
             src="/images/IMG_0783%201.png"
         />
       </div>
+    </div>
+    <div class="ib-calculator">
+      <ib-calculator-widget/>
     </div>
   </main>
 </template>
@@ -62,7 +65,15 @@ import {IbCardWidget} from "@/widgets/card";
     min-width: 100%;
     min-height: 100%;
   }
+}
 
+.ib-calculator {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  background: #E3D2FF;
 }
 
 </style>
