@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {defineProps} from 'vue';
+//TODO: move to models
 interface ImagePropsInterface {
   src: string
 };

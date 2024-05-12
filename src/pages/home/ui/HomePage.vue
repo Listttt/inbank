@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import IbImage from "@/shared/image/ui/IbImage.vue";
+import {IbImage} from "@/shared/image";
+import {IbTranslatedText} from "@/entities/translated-text";
 </script>
 
 <template>
@@ -16,6 +17,7 @@ import IbImage from "@/shared/image/ui/IbImage.vue";
         />
       </div>
     </div>
+    <ib-translated-text t-key="test"/>
   </main>
 </template>
 
