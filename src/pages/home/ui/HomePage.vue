@@ -7,12 +7,12 @@ import IbImage from "@/shared/image/ui/IbImage.vue";
     <div class="ib-home-page">
       <div class="ib-image">
         <ib-image
-            :src="'/src/app/assets/images/IMG_0783%201.png'"
+            src="/images/IMG_0783%201.png"
         />
       </div>
       <div class="ib-image">
         <ib-image
-            :src="'/src/app/assets/images/IMG_0783%201.png'"
+            src="/images/IMG_0783%201.png"
         />
       </div>
     </div>
