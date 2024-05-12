@@ -74,5 +74,6 @@ body {
 /*TODO: check probably its should be placed not here */
 .ib-container {
   max-width: 1536px;
+  width: 100%;
 }
 

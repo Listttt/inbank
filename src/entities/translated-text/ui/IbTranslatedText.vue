@@ -4,6 +4,7 @@ import {IbText} from "@/shared/text";
 import {useI18n} from "vue-i18n";
 
 const {t} = useI18n();
+
 //TODO: move to models
 interface TranslatedTextPropsInterface {
   tKey: string
