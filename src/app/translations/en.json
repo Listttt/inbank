@@ -1,3 +1,10 @@
 {
-  "test": "<i>testa</i>"
+  "test": "<i>testa</i>",
+  "card": {
+    "lines": {
+      "first": "Mini loan",
+      "second": "<i>Take charge</i> of unexpected costs",
+      "third": "Finance unforeseen expenses with Inbank. A quick and easy application process with an instant credit decision."
+    }
+  }
 }

@@ -23,9 +23,14 @@ import {IbCardWidget} from "@/widgets/card";
 <style scoped>
 .ib-content {
   display: flex;
-  gap: 12px;
+  gap: 24px;
   justify-content: space-between;
   padding: 16px 40px 80px;
+
+  @media (max-width: 770px) {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
 }
 
 .ib-image {
@@ -36,6 +41,10 @@ import {IbCardWidget} from "@/widgets/card";
   border-radius: clamp(6.25rem, -0.033rem + 13.055vw, 12.5rem);
   padding: 0;
   margin: 0;
+
+  @media (max-width: 770px) {
+    order: 1;
+  }
 }
 
 .ib-card {
@@ -46,6 +55,14 @@ import {IbCardWidget} from "@/widgets/card";
   border-radius: clamp(6.25rem, -0.033rem + 13.055vw, 12.5rem);
   padding: 0;
   margin: 0;
-  min-width: calc(100% / 12 * 5)
+  min-width: calc(100% / 12 * 5);
+
+  @media (max-width: 770px) {
+    order: 2;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
 }
+
 </style>

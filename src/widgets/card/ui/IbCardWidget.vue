@@ -1,11 +1,14 @@
 <script setup lang="ts">
 
+import IbTranslatedText from "@/entities/translated-text/ui/IbTranslatedText.vue";
 </script>
 
 <template>
-<div class="ib-card-widget">
-
-</div>
+  <div class="ib-card-widget">
+    <ib-translated-text t-key="card.lines.first"/>
+    <ib-translated-text t-key="card.lines.second"/>
+    <ib-translated-text t-key="card.lines.third"/>
+  </div>
 </template>
 
 <style scoped>
@@ -13,6 +16,12 @@
   background: #D9D4A7;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(4rem, -6.775rem + 22.389vw, 14.719rem) clamp(1.5rem, 0.495rem + 2.089vw, 2.5rem);
 }
+
 
 </style>
