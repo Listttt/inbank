@@ -16,7 +16,6 @@ import {IbCardWidget} from "@/widgets/card";
         />
       </div>
     </div>
-    <ib-translated-text t-key="test"/>
   </main>
 </template>
 

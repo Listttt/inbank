@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import IbTranslatedText from "@/entities/translated-text/ui/IbTranslatedText.vue";
+import {IbTranslatedText} from "@/entities/translated-text";
 </script>
 
 <template>
@@ -40,7 +40,6 @@ import IbTranslatedText from "@/entities/translated-text/ui/IbTranslatedText.vue
   text-align: center;
   color: #21093A;
   margin: 16px 0 clamp(0.5rem, -0.003rem + 1.044vw, 1rem);
-
 }
 
 .card-third-line {
