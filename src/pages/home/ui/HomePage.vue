@@ -30,6 +30,7 @@ import {IbCardWidget} from "@/widgets/card";
   @media (max-width: 770px) {
     flex-wrap: wrap;
     gap: 16px;
+    padding: 16px 16px 40px;
   }
 }
 
@@ -55,7 +56,7 @@ import {IbCardWidget} from "@/widgets/card";
   border-radius: clamp(6.25rem, -0.033rem + 13.055vw, 12.5rem);
   padding: 0;
   margin: 0;
-  min-width: calc(100% / 12 * 5);
+  max-width: calc(100% / 12 * 5);
 
   @media (max-width: 770px) {
     order: 2;
