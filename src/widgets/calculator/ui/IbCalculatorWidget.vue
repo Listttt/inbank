@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import {IbSlider} from "@/shared/slider";
 import {IbInput} from "@/shared/input";
+
+// TODO: request limits
+// TODO: apply limits to elements
+// TODO: apply limits to elements
+// TODO: on button
 </script>
 
 <template>
