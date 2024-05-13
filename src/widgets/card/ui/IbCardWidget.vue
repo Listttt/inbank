@@ -5,13 +5,19 @@ import {IbTranslatedText} from "@/entities/translated-text";
 
 <template>
   <div class="ib-card-widget">
-    <ib-translated-text t-key="card.lines.first" t-class="card-first-line"/>
-    <ib-translated-text t-key="card.lines.second" t-class="card-second-line"/>
-    <ib-translated-text t-key="card.lines.third" t-class="card-third-line"/>
+    <div class="card-first-line">
+      <ib-translated-text t-key="card.lines.first"/>
+    </div>
+    <div class="card-second-line">
+      <ib-translated-text t-key="card.lines.second"/>
+    </div>
+    <div class="card-third-line">
+      <ib-translated-text t-key="card.lines.third"/>
+    </div>
   </div>
 </template>
 
-<style>
+<style scoped>
 .ib-card-widget {
   background: #D9D4A7;
   width: 100%;

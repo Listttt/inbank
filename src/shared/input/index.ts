@@ -1,3 +1,3 @@
-import IbSlider from "@/shared/slider/ui/IbSlider.vue";
+import IbInput from "@/shared/input/ui/IbInput.vue";
 
-export {IbSlider}
+export {IbInput}
