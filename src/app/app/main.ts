@@ -16,7 +16,6 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 
-// console.log()
 const i18n = createI18n({
     locale: navigator.language,
     fallbackLocale: "en",
@@ -27,7 +26,7 @@ const i18n = createI18n({
 app.use(i18n);
 
 app.use(axios, {
-    baseUrl: '',
+    baseUrl: '/api/',
 });
 
 app.mount('#app')

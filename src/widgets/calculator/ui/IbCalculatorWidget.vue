@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import {IbSlider} from "@/shared/slider";
 import {IbInput} from "@/shared/input";
+import {useCalculatorStore} from "@/widgets/calculator";
+
+const store = useCalculatorStore();
+store.fetchCalculatorData();
 
 // TODO: request limits
 // TODO: apply limits to elements
