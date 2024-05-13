@@ -8,7 +8,8 @@ import router from '../router'
 import {createI18n} from "vue-i18n";
 // Not corresponding to FSD methodology. Translations should be located in segments where they are used.
 // TODO: create some way to keep translations in segment and grab them after together. (No time for it now)
-import en from "../translations/en.json"
+import en from "../translations/en.json";
+import axios from '../plugins/axios';
 
 const app = createApp(App)
 
@@ -24,5 +25,9 @@ const i18n = createI18n({
 });
 
 app.use(i18n);
+
+app.use(axios, {
+    baseUrl: '',
+});
 
 app.mount('#app')
