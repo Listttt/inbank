@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {useI18n} from "vue-i18n";
 import {defineProps} from "vue";
+const model = defineModel();
 
 const {t} = useI18n();
 
@@ -11,7 +12,7 @@ defineProps<InputPropsInterface>();
 </script>
 
 <template>
-    <input :placeholder="t(label)" name="ib-input" class="ib-input">
+    <input :placeholder="t(label)" name="ib-input" v-model.number="model" class="ib-input">
 </template>
 
 <style scoped>

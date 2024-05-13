@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import {onMounted, ref} from "vue";
+import {onMounted, ref, watch} from "vue";
 import type {Ref} from "vue";
+
+const model = defineModel();
 
 const slider: Ref<HTMLInputElement> = ref<HTMLInputElement>(null as unknown as HTMLInputElement);
 
@@ -14,13 +16,20 @@ onMounted(() => {
      drawProgress(this as HTMLInputElement)
    };
 
+  watch(model, (value) => {
+    // draw progress on next animation frame when slider value will be evaluated
+    setTimeout(() => {
+      drawProgress(slider.value)
+    }, 0);
+  })
+
   drawProgress(slider.value);
 })
 
 </script>
 
 <template>
-  <input ref="slider" type="range" class="ib-slider">
+  <input ref="slider" type="range" v-model.number="model" class="ib-slider">
 </template>
 
 <style scoped>

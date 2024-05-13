@@ -2,13 +2,25 @@
 import {IbSlider} from "@/shared/slider";
 import {IbInput} from "@/shared/input";
 import {useCalculatorStore} from "@/widgets/calculator";
+import {computed, reactive, watch, ref} from "vue";
+import {watchDebounced} from "@vueuse/core";
 
 const store = useCalculatorStore();
 store.fetchCalculatorData();
+const amount = defineModel('amount');
 
-// TODO: request limits
-// TODO: apply limits to elements
-// TODO: apply limits to elements
+const datas = ref(computed(() => store.getCalculatorData))
+
+const unwatch = watch(datas, (data) => {
+  amount.value = (data.max - data.min) / 2;
+  unwatch();
+});
+
+watchDebounced(amount, (value: any) => {
+      store.calculateOffer(+value, +value);
+    },
+    {debounce:300}
+)
 // TODO: on button
 </script>
 
@@ -17,8 +29,11 @@ store.fetchCalculatorData();
     <div>text</div>
     <div>calc</div>
 
-    <ib-slider class="w-3" min="100" max="7000" value="1000"/>
-    <ib-input label="test" type="number"/>
+
+    <ib-slider class="w-3" v-if="datas.min" :min="datas.min" :max="datas.max" v-model.number="amount"/>
+    {{datas.min}}
+    {{datas.max}}
+    <ib-input label="amount" v-model.number="amount" type="number"/>
   </div>
 </template>
 
