@@ -1,4 +1,7 @@
 {
+  "common": {
+    "apply": "Apply"
+  },
   "card": {
     "lines": {
       "first": "Mini loan",
@@ -16,6 +19,9 @@
       "range": {
         "min": "@:select.options.period",
         "max": "@:select.options.period"
+      },
+      "button": {
+        "apply": "@:common.apply now"
       }
     }
   }

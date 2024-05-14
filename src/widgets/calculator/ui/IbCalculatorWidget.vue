@@ -7,6 +7,10 @@ import type {Ref} from "vue";
 import {watchDebounced} from "@vueuse/core";
 import {IbSelect} from "@/shared/select";
 import IbTranslatedText from "@/entities/translated-text/ui/IbTranslatedText.vue";
+import {useRouter} from "vue-router";
+//TODO: remove it
+import {HomePage} from "@/pages/home";
+import {IbButton} from "@/shared/button";
 
 const store = useCalculatorStore();
 store.fetchCalculatorData();
@@ -49,6 +53,21 @@ const watchForPeriod = watch(calcData, ({periods}) => {
   periodOptions = ref(periods.map(value => ({name: 'select.options.period', value})));
   watchForPeriod();
 });
+
+
+
+
+
+
+const router = useRouter();
+const apply = () => {
+
+  const deb = router;
+  debugger;
+  router.addRoute('MAIN', { path: 'test', component: HomePage })
+  router.push('/test')
+  debugger;
+}
 </script>
 
 <template>
@@ -67,6 +86,19 @@ const watchForPeriod = watch(calcData, ({periods}) => {
     <ib-translated-text v-if="periodOptions.length" t-key="widget.calculator.range.max" :data="{value: periodOptions[periodOptions.length - 1].value}"/>
     <ib-select v-model.number="period" :options="periodOptions"/>
     {{offer}}
+
+
+    <dialog
+        class="ib-dialog"
+        open
+        ref="dialog"
+    >
+      test
+    </dialog>
+
+    <ib-button @click="apply">
+      <ib-translated-text class="ib-translated-text" t-key="widget.calculator.button.apply"/>
+    </ib-button>
   </div>
 </template>
 

@@ -49,7 +49,6 @@ export const useCalculatorStore = defineStore('calculator',{
         async calculateOffer(amount: number, period: number) {
             const {payment, currency}: CalculatorOfferInterface = await api.service.calculateOffer(amount, period).then(data => data as CalculatorOfferInterface);
 
-            debugger;
             this.$state.offer = {
                payment,
                currency
