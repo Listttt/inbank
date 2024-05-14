@@ -2,15 +2,18 @@
 import {IbSlider} from "@/shared/slider";
 import {IbInput} from "@/shared/input";
 import {useCalculatorStore} from "@/widgets/calculator";
-import {computed, reactive, watch, ref} from "vue";
+import {computed, reactive, watch, ref, onMounted} from "vue";
 import type {Ref} from "vue";
 import {watchDebounced} from "@vueuse/core";
 import {IbSelect} from "@/shared/select";
 import IbTranslatedText from "@/entities/translated-text/ui/IbTranslatedText.vue";
 import {useRouter} from "vue-router";
 //TODO: remove it
-import {HomePage} from "@/pages/home";
+// import {HomePage} from "@/pages/home";
 import {IbButton} from "@/shared/button";
+import {IbDialog} from "@/shared/dialog";
+
+const dialog = ref<IbDialog>(null);
 
 const store = useCalculatorStore();
 store.fetchCalculatorData();
@@ -30,6 +33,7 @@ watchDebounced(amount, (value: number | undefined) => {
     },
     {debounce:300}
 )
+
 
 
 const period = defineModel<number>('period');
@@ -61,12 +65,10 @@ const watchForPeriod = watch(calcData, ({periods}) => {
 
 const router = useRouter();
 const apply = () => {
+  dialog.value.show();
 
-  const deb = router;
-  debugger;
-  router.addRoute('MAIN', { path: 'test', component: HomePage })
-  router.push('/test')
-  debugger;
+  // router.addRoute('MAIN', { path: 'test', component: HomePage })
+  // router.push('/test')
 }
 </script>
 
@@ -88,13 +90,14 @@ const apply = () => {
     {{offer}}
 
 
-    <dialog
-        class="ib-dialog"
-        open
-        ref="dialog"
-    >
-      test
-    </dialog>
+<!--    <dialog-->
+<!--        class="ib-dialog"-->
+<!--        open-->
+<!--        ref="dialog"-->
+<!--    >-->
+<!--      test-->
+<!--    </dialog>-->
+    <ib-dialog ref="dialog">azaa</ib-dialog>
 
     <ib-button @click="apply">
       <ib-translated-text class="ib-translated-text" t-key="widget.calculator.button.apply"/>
