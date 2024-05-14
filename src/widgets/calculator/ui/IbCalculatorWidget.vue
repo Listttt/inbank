@@ -12,8 +12,9 @@ import {useRouter} from "vue-router";
 // import {HomePage} from "@/pages/home";
 import {IbButton} from "@/shared/button";
 import {IbDialog} from "@/shared/dialog";
+import IbForm from "@/entities/form/ui/IbForm.vue";
 
-const dialog = ref<IbDialog>(null);
+const dialog: Ref<HTMLDialogElement> = ref<HTMLDialogElement>(null as unknown as HTMLDialogElement);
 
 const store = useCalculatorStore();
 store.fetchCalculatorData();
@@ -97,7 +98,21 @@ const apply = () => {
 <!--    >-->
 <!--      test-->
 <!--    </dialog>-->
-    <ib-dialog ref="dialog">azaa</ib-dialog>
+<!--    <Teleport to="body">-->
+      <ib-dialog ref="dialog">
+        <ib-form :form-data="[{label: 'test', type: 'text', value: 'val', validation: [(val) => {return val === 'test' || 'test'}]}]"
+                 :submit="store.sendRequest"
+        />
+<!--        <form @submit.prevent="dialog.close()">-->
+<!--          <ib-input type="text" label="name"/>-->
+<!--          <ib-input type="number" label="amount"/>-->
+<!--          <ib-button type="submit" label="submit">-->
+<!--            <ib-translated-text class="ib-translated-text" t-key="widget.calculator.button.apply"/>-->
+<!--          </ib-button>-->
+<!--        </form>-->
+      </ib-dialog>
+<!--    </Teleport>-->
+
 
     <ib-button @click="apply">
       <ib-translated-text class="ib-translated-text" t-key="widget.calculator.button.apply"/>
@@ -111,6 +126,7 @@ const apply = () => {
   width: 100%;
   justify-content: center;
   align-items: center;
-  padding: 0px;
+  padding: 20px;
+  border-radius: 30px;
 }
 </style>

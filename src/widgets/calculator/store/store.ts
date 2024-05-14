@@ -53,6 +53,9 @@ export const useCalculatorStore = defineStore('calculator',{
                payment,
                currency
             } as CalculatorOfferInterface;
+        },
+        sendRequest(payload: any) {
+            debugger;
         }
     }
 });

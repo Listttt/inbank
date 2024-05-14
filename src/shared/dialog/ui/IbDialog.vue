@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import {ref} from 'vue';
+import type {Ref} from 'vue';
 
-const dialog = ref<HTMLDialogElement>(null);
+const dialog: Ref<HTMLDialogElement> = ref<HTMLDialogElement>(null as unknown as HTMLDialogElement);
 
 const visible = ref(false)
 const showModal = () => {
@@ -17,16 +18,22 @@ defineExpose({
 </script>
 
 <template>
-  <dialog
-      ref="dialog"
-      class="ib-dialog">
-    <slot/>
-  </dialog>
+  <Teleport to="body">
+    <dialog
+        ref="dialog"
+        class="ib-dialog"
+    >
+      <slot/>
+    </dialog>
+  </Teleport>
 </template>
 
 <style scoped>
 .ib-dialog {
   position: absolute;
   margin: auto;
+  padding: 40px;
+  border-radius: 30px;
+  border: 0px;
 }
 </style>
