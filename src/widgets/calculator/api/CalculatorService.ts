@@ -1,6 +1,5 @@
 import {BaseService} from "@/shared/api";
 import type {AxiosError, AxiosResponse} from "axios";
-import {useRouter} from "vue-router";
 
 export class CalculatorService extends BaseService {
     constructor() {
@@ -53,10 +52,6 @@ export class CalculatorService extends BaseService {
                         // TODO: remove magic
                         decision: amount > 1000 ? 'approved' : 'rejected'
                     }
-                    // result.data = {
-                    //     payment: +amount / +period * 1.07,
-                    //     currency: "EUR"
-                    // }
                     break;
                 }
             }
@@ -91,5 +86,4 @@ export class CalculatorService extends BaseService {
             return response.data;
         })
     }
-
 }
