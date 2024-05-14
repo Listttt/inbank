@@ -12,7 +12,7 @@ defineProps<InputPropsInterface>();
 </script>
 
 <template>
-    <input :placeholder="t(label)" name="ib-input" v-model.number="model" class="ib-input">
+    <input :placeholder="t(label)" name="ib-input" v-model="model" class="ib-input">
 </template>
 
 <style scoped>

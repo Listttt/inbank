@@ -23,12 +23,13 @@ interface PayloadInterface {
 interface FormPropsInterface {
   formData: Array<FormDataInterface>
   // submit: FormSubmitInterface;
+  //TODO: add text for button
   submit: ([payload]?: any) => Promise<any> | any;
 }
 const props = defineProps<FormPropsInterface>();
 function onSubmit() {
   const payload = props.formData.reduce((acc, item) => ({...acc, [item.label]: item.value}), {})
-  props.submit(payload) ;
+  props.submit(payload);
 }
 </script>
 
@@ -37,9 +38,9 @@ function onSubmit() {
   <ib-input v-for="(input, index) in formData"
             :key="index"
             :label="input.label"
+            :type="input.type"
+            v-model="input.value"
   />
-<!--  :type="input.type"-->
-<!--  v-model="input.value"-->
   <ib-button type="submit"></ib-button>
 </form>
 </template>
