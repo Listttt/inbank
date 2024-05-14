@@ -35,9 +35,10 @@ export const useCalculatorStore = defineStore('calculator',{
             // @ts-ignore
             return this.$state.data;
         },
-        getCalculatorOffer(): CalculatorOfferInterface {
+        getCalculatorOffer(): string {
             // @ts-ignore
-            return this.$state.offer;
+            const {payment, currency} = this.$state.offer;
+            return Intl.NumberFormat('de-DE', { style: 'currency', currency: currency || 'EUR'  }).format(payment || 0);
         }
 
     },
@@ -48,6 +49,7 @@ export const useCalculatorStore = defineStore('calculator',{
         async calculateOffer(amount: number, period: number) {
             const {payment, currency}: CalculatorOfferInterface = await api.service.calculateOffer(amount, period).then(data => data as CalculatorOfferInterface);
 
+            debugger;
             this.$state.offer = {
                payment,
                currency
