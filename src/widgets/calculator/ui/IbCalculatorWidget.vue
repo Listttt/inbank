@@ -100,8 +100,14 @@ const apply = () => {
 <!--    </dialog>-->
 <!--    <Teleport to="body">-->
       <ib-dialog ref="dialog">
-        <ib-form :form-data="[{label: 'test', type: 'text', value: 'val', validation: [(val) => {return val === 'test' || 'test'}]}]"
-                 :submit="store.sendRequest"
+        <ib-form :form-data="[
+            {label: 'name', type: 'text', value: 'val', validation: [(val) => {return val === 'test' || 'test'}]},
+            {label: 'amount', type: 'number', value: 'val', validation: [(val) => {return val === 'test' || 'test'}]},
+            ]"
+                 :submit="(payload) => {
+                   store.sendRequest(payload).then(() => dialog.close());
+                   // dialog.close();
+                 }"
         />
 <!--        <form @submit.prevent="dialog.close()">-->
 <!--          <ib-input type="text" label="name"/>-->

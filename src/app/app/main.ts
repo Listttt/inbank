@@ -1,6 +1,6 @@
 import '../assets/main.css'
 
-import { createApp } from 'vue'
+import { createApp, markRaw } from 'vue'
 import { createPinia } from 'pinia'
 
 import App from './App.vue'
@@ -11,10 +11,15 @@ import {createI18n} from "vue-i18n";
 import en from "../translations/en.json";
 import axios from '../plugins/axios';
 
-const app = createApp(App)
+const pinia = createPinia();
+pinia.use(({store}) => {
+    store.$router = markRaw(router);
+});
 
-app.use(createPinia())
-app.use(router)
+const app = createApp(App);
+
+app.use(pinia);
+app.use(router);
 
 const i18n = createI18n({
     locale: navigator.language,

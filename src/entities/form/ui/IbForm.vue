@@ -41,7 +41,7 @@ function onSubmit() {
             :type="input.type"
             v-model="input.value"
   />
-  <ib-button type="submit"></ib-button>
+  <ib-button type="submit">TODO</ib-button>
 </form>
 </template>
 

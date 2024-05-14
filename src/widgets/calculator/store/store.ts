@@ -1,5 +1,9 @@
 import { defineStore } from 'pinia'
 import {CalculatorService} from "@/widgets/calculator/api/CalculatorService";
+import { useRouter} from "vue-router";
+import {HomePage} from "@/pages/home";
+
+const router = useRouter();
 
 const service: CalculatorService = new CalculatorService();
 
@@ -23,8 +27,14 @@ interface CalculatorStateInterface {
 
 interface ApiInterface {
     service: CalculatorService
+    // router: Router
 }
-const api: ApiInterface= {service} as ApiInterface;
+debugger;
+const api: ApiInterface= {
+    service,
+    // router: useRouter()
+} as ApiInterface;
+debugger;
 export const useCalculatorStore = defineStore('calculator',{
     state: () => ({
         data: {} as CalculatorDataInterface,
@@ -55,7 +65,14 @@ export const useCalculatorStore = defineStore('calculator',{
             } as CalculatorOfferInterface;
         },
         sendRequest(payload: any) {
-            debugger;
+            // debugger;
+            return api.service.claim({...payload, payment: this.$state.offer.payment}).then(({decision}) => {
+                //TODO: Breaks FSD
+                //@ts-ignore
+                    this.$router.addRoute('MAIN', { path: decision, component: HomePage })
+                //@ts-ignore
+                    this.$router.push(`/${decision}`)
+            })
         }
     }
 });

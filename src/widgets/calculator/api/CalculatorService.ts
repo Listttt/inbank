@@ -1,5 +1,6 @@
 import {BaseService} from "@/shared/api";
 import type {AxiosError, AxiosResponse} from "axios";
+import {useRouter} from "vue-router";
 
 export class CalculatorService extends BaseService {
     constructor() {
@@ -42,6 +43,22 @@ export class CalculatorService extends BaseService {
                     }
                     break;
                 }
+                case "/calculator/v1/claim": {
+                    result = error.response as AxiosResponse;
+
+                    const {amount} = JSON.parse(error!.config!.data);
+
+                    const MIN_REQUIRED_AMOUNT = 1000;
+                    result.data = {
+                        // TODO: remove magic
+                        decision: amount > 1000 ? 'approved' : 'rejected'
+                    }
+                    // result.data = {
+                    //     payment: +amount / +period * 1.07,
+                    //     currency: "EUR"
+                    // }
+                    break;
+                }
             }
             if(!(result as AxiosResponse).data) {
                 throw error;
@@ -65,6 +82,12 @@ export class CalculatorService extends BaseService {
 
     public calculateOffer(amount: number, period: number): Promise<any> {
         return this.post('/calculator/v1/offer', {amount, period}).then((response: AxiosResponse): Promise<any> => {
+            return response.data;
+        })
+    }
+    //TODO
+    public claim(payload: any): Promise<any> {
+        return this.post('/calculator/v1/claim', payload).then((response: AxiosResponse): Promise<any> => {
             return response.data;
         })
     }
