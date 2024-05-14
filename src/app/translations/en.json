@@ -5,5 +5,10 @@
       "second": "<i>Take charge</i> of unexpected costs",
       "third": "Finance unforeseen expenses with Inbank. A quick and easy application process with an instant credit decision."
     }
+  },
+  "select": {
+    "options": {
+      "period": "{value} months"
+    }
   }
 }

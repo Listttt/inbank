@@ -3,25 +3,52 @@ import {IbSlider} from "@/shared/slider";
 import {IbInput} from "@/shared/input";
 import {useCalculatorStore} from "@/widgets/calculator";
 import {computed, reactive, watch, ref} from "vue";
+import type {Ref} from "vue";
 import {watchDebounced} from "@vueuse/core";
+import {IbSelect} from "@/shared/select";
+import IbTranslatedText from "@/entities/translated-text/ui/IbTranslatedText.vue";
 
 const store = useCalculatorStore();
 store.fetchCalculatorData();
-const amount = defineModel('amount');
 
-const datas = ref(computed(() => store.getCalculatorData))
+const amount = defineModel<number>('amount');
 
-const unwatch = watch(datas, (data) => {
+const calcData = ref(computed(() => store.getCalculatorData))
+
+const watchForAmount = watch(calcData, (data) => {
   amount.value = (data.max - data.min) / 2;
-  unwatch();
+  watchForAmount();
 });
 
-watchDebounced(amount, (value: any) => {
-      store.calculateOffer(+value, +value);
+watchDebounced(amount, (value: number | undefined) => {
+      store.calculateOffer(value as number, period.value!);
+    },
+    {debounce:300}
+)
+
+
+const period = defineModel<number>('period');
+
+watchDebounced(period, (value: number | undefined) => {
+      store.calculateOffer(amount.value!, value as number);
     },
     {debounce:300}
 )
 // TODO: on button
+
+
+
+// TODO: bring propper interface Ref<Array<CalculatorOptionsInterface>>
+let periodOptions: Ref<Array<any>> = ref([]);
+let periodStep: Ref<number> = ref(0);
+
+const watchForPeriod = watch(calcData, ({periods}) => {
+  periodStep = ref(periods[periods.length-1] / periods.length);
+  period.value = periods[0];
+
+  periodOptions = ref(periods.map(value => ({name: 'select.options.period', value})));
+  watchForPeriod();
+});
 </script>
 
 <template>
@@ -30,10 +57,15 @@ watchDebounced(amount, (value: any) => {
     <div>calc</div>
 
 
-    <ib-slider class="w-3" v-if="datas.min" :min="datas.min" :max="datas.max" v-model.number="amount"/>
-    {{datas.min}}
-    {{datas.max}}
+    <ib-slider v-if="calcData.min" :min="calcData.min" :max="calcData.max" v-model.number="amount"/>
+    {{calcData.min}}
+    {{calcData.max}}
     <ib-input label="amount" v-model.number="amount" type="number"/>
+
+    <ib-slider v-if="periodStep" step="6" :min="calcData.periods[0]" :max="calcData.periods[calcData.periods.length -1]" v-model.number="period"/>
+    <ib-select v-model.number="period" :options="periodOptions"/>
+    <ib-translated-text t-key=""/>
+    <ib-translated-text t-key=""/>
   </div>
 </template>
 

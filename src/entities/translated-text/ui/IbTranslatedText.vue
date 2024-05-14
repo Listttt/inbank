@@ -7,7 +7,8 @@ const {t} = useI18n();
 
 //TODO: move to models
 interface TranslatedTextPropsInterface {
-  tKey: string
+  tKey: string;
+  // data: Object
 };
 
 defineProps<TranslatedTextPropsInterface>();
