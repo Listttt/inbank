@@ -8,14 +8,14 @@ const {t} = useI18n();
 //TODO: move to models
 interface TranslatedTextPropsInterface {
   tKey: string;
-  // data: Object
+  data?: {[key: string]: number | string}
 };
 
 defineProps<TranslatedTextPropsInterface>();
 </script>
 
 <template>
-  <ib-text><div v-html="t(tKey || 'missing key')"/></ib-text>
+  <ib-text><div v-html="t((tKey || 'missing key'), data || {})"/></ib-text>
 </template>
 
 <style scoped>

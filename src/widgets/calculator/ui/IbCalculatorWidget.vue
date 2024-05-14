@@ -63,9 +63,9 @@ const watchForPeriod = watch(calcData, ({periods}) => {
     <ib-input label="amount" v-model.number="amount" type="number"/>
 
     <ib-slider v-if="periodStep" step="6" :min="calcData.periods[0]" :max="calcData.periods[calcData.periods.length -1]" v-model.number="period"/>
+    <ib-translated-text v-if="periodOptions.length"t-key="widget.calculator.range.min" :data="{value: periodOptions[0].value}"/>
+    <ib-translated-text v-if="periodOptions.length" t-key="widget.calculator.range.max" :data="{value: periodOptions[periodOptions.length - 1].value}"/>
     <ib-select v-model.number="period" :options="periodOptions"/>
-    <ib-translated-text t-key=""/>
-    <ib-translated-text t-key=""/>
   </div>
 </template>
 

@@ -10,5 +10,13 @@
     "options": {
       "period": "{value} months"
     }
+  },
+  "widget":{
+    "calculator": {
+      "range": {
+        "min": "@:select.options.period",
+        "max": "@:select.options.period"
+      }
+    }
   }
 }
