@@ -37,7 +37,7 @@ export class CalculatorService extends BaseService {
                     const {amount, period} = JSON.parse(error!.config!.data);
 
                     result.data = {
-                        payment: +amount / +period * 1.07,
+                        payment: Number(+amount / +period * 1.07).toFixed(2),
                         currency: "EUR"
                     }
                     break;

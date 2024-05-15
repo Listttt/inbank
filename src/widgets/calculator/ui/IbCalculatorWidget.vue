@@ -22,7 +22,7 @@ store.fetchCalculatorData();
 const amount = defineModel<number>('amount');
 
 const calcData = ref(computed(() => store.getCalculatorData));
-const offer = ref(computed(() => store.getCalculatorOffer));
+const payment = ref(computed(() => store.getCalculatorOfferPayment));
 
 const watchForAmount = watch(calcData, (data) => {
   amount.value = (data.max - data.min) / 2;
@@ -88,7 +88,7 @@ const apply = () => {
     <ib-translated-text v-if="periodOptions.length"t-key="widget.calculator.range.min" :data="{value: periodOptions[0].value}"/>
     <ib-translated-text v-if="periodOptions.length" t-key="widget.calculator.range.max" :data="{value: periodOptions[periodOptions.length - 1].value}"/>
     <ib-select v-model.number="period" :options="periodOptions"/>
-    {{offer}}
+    {{payment}}
 
 
 <!--    <dialog-->

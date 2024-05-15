@@ -1,6 +1,7 @@
 {
   "common": {
-    "apply": "Apply"
+    "apply": "Apply",
+    "submit": "Submit"
   },
   "card": {
     "lines": {
@@ -12,6 +13,11 @@
   "select": {
     "options": {
       "period": "{value} months"
+    }
+  },
+  "entities": {
+    "form": {
+      "submit": "@:common.submit"
     }
   },
   "widget":{

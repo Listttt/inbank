@@ -2,6 +2,7 @@
 
 import {IbButton} from "@/shared/button";
 import {IbInput} from "@/shared/input";
+import {IbTranslatedText} from "@/entities/translated-text";
 
 interface FormSubmitInterface {
   method?: () => any;
@@ -41,7 +42,9 @@ function onSubmit() {
             :type="input.type"
             v-model="input.value"
   />
-  <ib-button type="submit">TODO</ib-button>
+  <ib-button type="submit">
+    <ib-translated-text t-key="entities.form.submit"/>
+  </ib-button>
 </form>
 </template>
 

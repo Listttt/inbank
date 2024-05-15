@@ -17,7 +17,9 @@ interface CalculatorDataInterface {
 type CurrencyType = 'EUR';
 interface CalculatorOfferInterface {
     payment: number;
-    currency: CurrencyType
+    currency: CurrencyType;
+    period: number;
+    amount: number;
 }
 interface CalculatorStateInterface {
     data: CalculatorDataInterface,
@@ -40,9 +42,16 @@ export const useCalculatorStore = defineStore('calculator',{
             // @ts-ignore
             return this.$state.data;
         },
+        getCalculatorOfferPayment(): string {
+            // @ts-ignore
+            const {payment, currency} = this.$state.offer;
+            // TODO: currency formater helper
+            return Intl.NumberFormat('de-DE', { style: 'currency', currency: currency || 'EUR'  }).format(payment || 0);
+        },
         getCalculatorOffer(): string {
             // @ts-ignore
             const {payment, currency} = this.$state.offer;
+            // TODO: currency formater helper
             return Intl.NumberFormat('de-DE', { style: 'currency', currency: currency || 'EUR'  }).format(payment || 0);
         }
 
@@ -56,7 +65,9 @@ export const useCalculatorStore = defineStore('calculator',{
 
             this.$state.offer = {
                payment,
-               currency
+               currency,
+                period,
+                amount
             } as CalculatorOfferInterface;
         },
         sendRequest(payload: any) {
