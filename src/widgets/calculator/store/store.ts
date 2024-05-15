@@ -64,15 +64,16 @@ export const useCalculatorStore = defineStore('calculator',{
             const {payment, currency}: CalculatorOfferInterface = await api.service.calculateOffer(amount, period).then(data => data as CalculatorOfferInterface);
 
             this.$state.offer = {
-               payment,
-               currency,
+                payment,
+                currency,
                 period,
                 amount
             } as CalculatorOfferInterface;
         },
         sendRequest(payload: any) {
             return api.service.claim({...payload, payment: this.$state.offer.payment}).then(({decision}) => {
-                dynamicRoutesStore.addDynamicRoute(decision, payload.name);
+                //@ts-ignore
+                dynamicRoutesStore.addDynamicRoute(decision, {name: payload.name, ...this.$state.offer});
             })
         }
     }

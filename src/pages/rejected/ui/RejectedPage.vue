@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface RejectedPagePropsInterface{
-  uname: string;
+  name: string;
 }
 
 defineProps<RejectedPagePropsInterface>();
@@ -8,7 +8,7 @@ defineProps<RejectedPagePropsInterface>();
 
 <template>
 rejected
-  name: {{uname}}
+  name: {{name}}
 </template>
 
 <style scoped>

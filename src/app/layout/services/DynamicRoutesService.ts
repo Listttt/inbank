@@ -10,12 +10,13 @@ const capitalize = (text: string) => text[0].toUpperCase() + text.substring(1);
 
 export const useLayoutService = () => {
     store.$onAction(( {args}) => {
-        const [path, params] = args;
+        const [path, props] = args;
+        debugger;
         switch (path) {
             case 'approved':
             case 'rejected': {
-                $router.addRoute(ROUTE_NAMES.MAIN, { path, name: path, params: {uname: params}, component: () => import(`@/pages/${path}/ui/${capitalize(path)}Page.vue`), props: {uname: params}})
-                $router.push({name: path, params: {uname: params}})
+                $router.addRoute(ROUTE_NAMES.MAIN, { path, name: path, component: () => import(`@/pages/${path}/ui/${capitalize(path)}Page.vue`), props});
+                $router.push({name: path});
                 break;
             }
         }
