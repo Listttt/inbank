@@ -76,7 +76,35 @@ body {
   max-width: 1536px;
   width: 100%;
 }
- .ib-break-container {
-   position: absolute;
- }
 
+.inter-500 {
+  font-family: "Inter", serif;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  text-align: center;
+  color: #21093A;
+}
+
+.bitter-400 {
+  font-family: "Bitter", serif;
+  font-weight: 400 !important;
+  font-size: clamp(2rem, -0.262rem + 4.7vw, 4.25rem) !important;
+  line-height: clamp(2.25rem, -0.012rem + 4.7vw, 4.5rem) !important;
+  text-align: center;
+  color: #21093A;
+  margin: 16px 0 clamp(0.5rem, -0.003rem + 1.044vw, 1rem);
+}
+
+.inter-400 {
+  font-family: "Inter", serif;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  text-align: center;
+  color: #21093A;
+}
+
+.font-size-14 {
+  font-size: 14px !important;
+}

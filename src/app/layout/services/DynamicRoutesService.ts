@@ -9,13 +9,20 @@ const {$router} = store;
 const capitalize = (text: string) => text[0].toUpperCase() + text.substring(1);
 
 export const useLayoutService = () => {
-    store.$onAction(( {args}) => {
+    store.$onAction(( {name: actionName,args}) => {
         const [path, props] = args;
         switch (path) {
             case 'approved':
             case 'rejected': {
-                $router.addRoute(ROUTE_NAMES.MAIN, { path, name: path, component: () => import(`@/pages/${path}/ui/${capitalize(path)}Page.vue`), props});
-                $router.push({name: path});
+                if(actionName === 'addDynamicRoute') {
+                    $router.addRoute(ROUTE_NAMES.MAIN, { path, name: path, component: () => import(`@/pages/${path}/ui/${capitalize(path)}Page.vue`), props});
+                    $router.push({name: path});
+                }
+                else if (actionName === 'removeDynamicRoute') {
+                     $router.removeRoute(path);
+                     $router.go(-1);
+                }
+
                 break;
             }
         }
