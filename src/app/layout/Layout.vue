@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import {IbHeader} from "@/widgets/header";
 import {IbContainer} from "@/widgets/container";
-
+import {useLayoutService} from "@/app/layout/services/DynamicRoutesService";
+useLayoutService();
 </script>
 
 <template>
