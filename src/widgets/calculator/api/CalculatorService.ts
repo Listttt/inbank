@@ -48,10 +48,11 @@ export class CalculatorService extends BaseService {
                     const {amount} = JSON.parse(error!.config!.data);
 
                     const MIN_REQUIRED_AMOUNT = 1000;
-                    result.data = {
-                        // TODO: remove magic
-                        decision: amount > 1000 ? 'approved' : 'rejected'
-                    }
+                    // Drop undefined record ('reason' for approved decision)
+                    result.data = JSON.parse(JSON.stringify({
+                        decision: amount > MIN_REQUIRED_AMOUNT ? 'approved' : 'rejected',
+                        reason: amount > MIN_REQUIRED_AMOUNT ? undefined: 'income'
+                    }));
                     break;
                 }
             }

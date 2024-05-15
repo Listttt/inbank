@@ -76,4 +76,7 @@ body {
   max-width: 1536px;
   width: 100%;
 }
+ .ib-break-container {
+   position: absolute;
+ }
 

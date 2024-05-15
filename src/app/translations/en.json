@@ -1,7 +1,8 @@
 {
   "common": {
     "apply": "Apply",
-    "submit": "Submit"
+    "submit": "Submit",
+    "exit": "Exit"
   },
   "card": {
     "lines": {
@@ -29,6 +30,19 @@
       "button": {
         "apply": "@:common.apply now"
       }
+    }
+  },
+  "page": {
+    "rejected": {
+      "info-card": {
+        "greeting": "<i>Dear</i> {name}",
+        "message": "Unfortunately, your loan was denied",
+        "reason": {
+          "income": "In addition to your income and expenses, a number of other factors play a role in loan decisions.",
+          "undefined": "Unknown reason"
+        }
+      },
+      "button": "@:common.exit"
     }
   }
 }

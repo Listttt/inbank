@@ -11,7 +11,6 @@ const capitalize = (text: string) => text[0].toUpperCase() + text.substring(1);
 export const useLayoutService = () => {
     store.$onAction(( {args}) => {
         const [path, props] = args;
-        debugger;
         switch (path) {
             case 'approved':
             case 'rejected': {
