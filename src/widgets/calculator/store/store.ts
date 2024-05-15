@@ -72,7 +72,7 @@ export const useCalculatorStore = defineStore('calculator',{
         },
         sendRequest(payload: any) {
             return api.service.claim({...payload, payment: this.$state.offer.payment}).then(({decision}) => {
-                dynamicRoutesStore.addDynamicRoute(decision);
+                dynamicRoutesStore.addDynamicRoute(decision, payload.name);
             })
         }
     }
