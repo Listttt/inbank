@@ -3,6 +3,8 @@
 import {IbButton} from "@/shared/button";
 import {IbInput} from "@/shared/input";
 import {IbTranslatedText} from "@/entities/translated-text";
+import {computed, ref} from "vue";
+import type {Ref} from "vue";
 
 interface FormSubmitInterface {
   method?: () => any;
@@ -32,11 +34,17 @@ function onSubmit() {
   const payload = props.formData.reduce((acc, item) => ({...acc, [item.label]: item.value}), {})
   props.submit(payload);
 }
+
+const inputs: Ref<Array<any>> = ref([]);
+const disabled = computed(() => {
+  return inputs.value.some((input: any) => typeof input.isValid === 'string')
+});
 </script>
 
 <template>
 <form @submit.prevent="onSubmit">
   <ib-input v-for="(input, index) in formData"
+            :ref="el => !el || inputs.push(el)"
             :key="index"
             :label="input.label"
             :type="input.type"
@@ -44,7 +52,7 @@ function onSubmit() {
             v-model="input.value"
             class="ib-form-input"
   />
-  <ib-button type="submit">
+  <ib-button :disabled="disabled" type="submit">
     <ib-translated-text t-key="entities.form.submit"/>
   </ib-button>
 </form>

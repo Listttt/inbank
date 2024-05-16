@@ -60,7 +60,12 @@ defineExpose({
 
 <template>
 
-  <div>
+  <div
+      class="wrapper"
+      :class="{
+        invalid: showMessage
+      }"
+  >
     <input
         ref="input"
         @blur="validate"
@@ -101,6 +106,24 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+.invalid {
+  color: #EB5757 !important;
+
+  input {
+    border-color: #EB5757 !important;
+  }
+
+  input:focus {
+    border-color: #EB5757 !important;
+    outline: none;
+  }
+}
+
+
+.wrapper {
+  width: 100%;
 }
 
 </style>

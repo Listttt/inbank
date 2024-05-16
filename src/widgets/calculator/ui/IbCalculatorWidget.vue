@@ -102,7 +102,7 @@ const apply = () => {
       <ib-dialog ref="dialog">
         <ib-form :form-data="[
             {label: 'name', type: 'text', value: 'val', validation: [(val) => {return val === 'test' || 'test'}]},
-            {label: 'amount', type: 'number', value: 'val', validation: [(val) => {return val === 'test' || 'test'}]},
+            {label: 'amount', type: 'number', value: 'val', validation: [(val) => {return +val === 12 || 'test'}]},
             ]"
                  :submit="(payload) => {
                    store.sendRequest(payload).then(() => dialog.close());
