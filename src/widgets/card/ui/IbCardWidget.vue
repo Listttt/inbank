@@ -27,7 +27,6 @@ defineExpose(
       </div>
     </div>
 
-
     <div class="ib-card-widget_action">
       <ib-button class="ib-button" @click="click()">
         <ib-translated-text t-key="widget.card.button"/>
@@ -46,7 +45,7 @@ defineExpose(
   justify-content: center;
   align-items: center;
   gap: 24px;
-  padding: clamp(4rem, -6.775rem + 22.389vw, 14.719rem) clamp(1.5rem, 0.495rem + 2.089vw, 2.5rem)
+  padding: clamp(4rem, -6.021rem + 20.822vw, 13.969rem) clamp(1.5rem, 0.495rem + 2.089vw, 2.5rem)
 }
 
 
