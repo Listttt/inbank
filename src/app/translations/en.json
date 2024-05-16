@@ -7,6 +7,7 @@
     "required": "Required"
   },
   "shared": {
+    "payment": "Monthly payment",
     "months": {
       "number": "{value} months"
     }
@@ -30,6 +31,10 @@
   },
   "widget":{
     "calculator": {
+      "output": {
+        "payment": "@:shared.payment",
+        "warning": "The calculation is approximate and may differ from the conditions offered to you. Please submit a loan application to receive a personal offer. Financial services are provided by AS Inbank Finance."
+      },
       "text": {
         "message": "Calculate your <i>monthly payment</i>",
         "details": "Estimate your monthly payments based on the chosen load amount and time period"
@@ -88,7 +93,7 @@
           "amount-value": "{value}",
           "period": "Loan period",
           "period-value": "@:shared.months.number",
-          "payment": "Monthly payment",
+          "payment": "@:shared.payment",
           "payment-value": "{value}"
         }
       },

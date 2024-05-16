@@ -122,3 +122,12 @@ body {
   font-size: 48px !important;
   line-height: 56px !important;
 }
+
+.text-12-line-16 {
+  font-size: 12px !important;
+  line-height: 16px !important;
+}
+
+.text-left {
+  text-align: left
+}
