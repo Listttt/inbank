@@ -106,6 +106,9 @@ onMounted(() => {
           </div>
           <div class="ib-calculator-widget_calculator_amount_input">
 
+            <div class="inter-500 text-12-line-18 label">
+              <ib-translated-text t-key="widget.calculator.label.input.amount"/>
+            </div>
             <!--          TODO: add possibility to pass data for validation translations-->
             <ib-input
                 ref="amountInput"
@@ -127,6 +130,9 @@ onMounted(() => {
             </div>
           </div>
           <div class="ib-calculator-widget_calculator_range_select">
+            <div class="inter-500 text-12-line-18 label">
+              <ib-translated-text t-key="widget.calculator.label.select.period"/>
+            </div>
             <ib-select v-model.number="period" :options="periodOptions"/>
           </div>
         </div>
@@ -344,5 +350,13 @@ onMounted(() => {
   background-repeat: no-repeat;
   width: 24px;
   cursor: pointer;
+}
+
+.label {
+  position: absolute;
+  margin: -8px 0 0 8px;
+  background: white;
+  padding: 0 8px;
+  border-radius: 16px;
 }
 </style>

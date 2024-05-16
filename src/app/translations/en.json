@@ -4,7 +4,9 @@
     "submit": "Submit",
     "exit": "Exit",
     "email": "E-Mail",
-    "required": "Required"
+    "required": "Required",
+    "amount": "Amount",
+    "period": "Period"
   },
   "shared": {
     "payment": "Monthly payment",
@@ -34,6 +36,14 @@
       "button": "@:common.apply now"
     },
     "calculator": {
+      "label": {
+        "input": {
+          "amount": "@:common.amount"
+        },
+        "select": {
+          "period": "@:common.period"
+        }
+      },
       "output": {
         "payment": "@:shared.payment",
         "warning": "The calculation is approximate and may differ from the conditions offered to you. Please submit a loan application to receive a personal offer. Financial services are provided by AS Inbank Finance."
