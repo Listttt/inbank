@@ -18,7 +18,7 @@ export class CalculatorService extends BaseService {
                     result.data = {
                         min: 100,
                         max: 15000,
-                        periods: [6, 12, 18, 24, 30, 36],
+                        periods: [...Array(13).keys()].filter(i => i).map(i => i * 6),
                         percent: 7,
                         commission: 0.2,
                         currency: 'EUR'

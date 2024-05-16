@@ -60,8 +60,6 @@ const apply = () => {
 }
 
 
-const formatWithCurrency = (value: string | number) => Intl.NumberFormat('de-DE', { style: 'currency', currency: calcData?.value.currency || 'EUR', minimumFractionDigits: 0 }).format(+value || 0);
-
 const amountInput = ref();
 
 onMounted(() => {
@@ -97,15 +95,15 @@ onMounted(() => {
             <ib-slider v-if="calcData.min" :min="calcData.min" :max="calcData.max" v-model.number="amount"/>
             <div class="ib-calculator-widget_calculator_amount_slider_values">
             <span>
-              {{formatWithCurrency(calcData.min)}}
+              {{$c(calcData.min, calcData.currency)}}
             </span>
               <span>
-              {{formatWithCurrency(calcData.max)}}
+              {{$c(calcData.max, calcData.currency)}}
             </span>
             </div>
           </div>
           <div class="ib-calculator-widget_calculator_amount_input">
-
+            <!--            TODO: create separate component for label-->
             <div class="inter-500 text-12-line-18 label">
               <ib-translated-text t-key="widget.calculator.label.input.amount"/>
             </div>
@@ -130,6 +128,7 @@ onMounted(() => {
             </div>
           </div>
           <div class="ib-calculator-widget_calculator_range_select">
+<!--            TODO: create separate component for label-->
             <div class="inter-500 text-12-line-18 label">
               <ib-translated-text t-key="widget.calculator.label.select.period"/>
             </div>

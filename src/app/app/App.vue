@@ -4,7 +4,8 @@ import type {AxiosInstance} from 'axios';
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
-    $axios: AxiosInstance
+    $axios: AxiosInstance,
+    $c: (amount: string | number, currency?: string, minimumFractionDigits?: number) => string
   }
 }
 </script>

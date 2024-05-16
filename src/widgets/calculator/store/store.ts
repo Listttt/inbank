@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import {CalculatorService} from "@/widgets/calculator/api/CalculatorService";
 import {useDynamicRoutesStore} from "@/features/dynamic-routes";
+import {formatCurrency} from "@/shared/helper/currency";
 
 const service: CalculatorService = new CalculatorService();
 
@@ -46,14 +47,12 @@ export const useCalculatorStore = defineStore('calculator',{
         getCalculatorOfferPayment(): string {
             // @ts-ignore
             const {payment, currency} = this.$state.offer;
-            // TODO: currency formater helper
-            return Intl.NumberFormat('de-DE', { style: 'currency', currency: currency || 'EUR'  }).format(payment || 0);
+            return formatCurrency(payment, currency);
         },
         getCalculatorOffer(): string {
             // @ts-ignore
             const {payment, currency} = this.$state.offer;
-            // TODO: currency formater helper
-            return Intl.NumberFormat('de-DE', { style: 'currency', currency: currency || 'EUR'  }).format(payment || 0);
+            return formatCurrency(payment, currency);
         }
 
     },

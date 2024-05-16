@@ -1,0 +1,1 @@
+export const formatCurrency = (amount: string | number = 0, currency = 'EUR', minimumFractionDigits = 2) => Intl.NumberFormat('de-DE', { style: 'currency', currency, minimumFractionDigits }).format(amount as number).replace(',00', '').replace('.', ' ').replace(',', '.');

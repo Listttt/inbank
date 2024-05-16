@@ -10,6 +10,7 @@ import {createI18n} from "vue-i18n";
 // TODO: create some way to keep translations in segment and grab them after together. (No time for it now)
 import en from "../translations/en.json";
 import axios from '../plugins/axios';
+import currency from '../plugins/currency';
 
 const pinia = createPinia();
 pinia.use(({store}) => {
@@ -33,5 +34,7 @@ app.use(i18n);
 app.use(axios, {
     baseUrl: '/api/',
 });
+
+app.use(currency);
 
 app.mount('#app')

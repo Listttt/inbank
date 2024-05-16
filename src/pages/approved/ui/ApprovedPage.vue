@@ -8,6 +8,7 @@ import {IbDetailRecordWidget} from "@/widgets/detail-record";
 
 import {ROUTE_NAMES} from "@/shared/config";
 import {useDynamicRoutesStore} from "@/features/dynamic-routes";
+import {formatCurrency} from "@/shared/helper/currency";
 
 const dynamicRoutesStore = useDynamicRoutesStore();
 
@@ -22,9 +23,7 @@ interface ApprovedPagePropsInterface {
 const props = defineProps<ApprovedPagePropsInterface>()
 
 const {amount, period, payment} = props;
-//TODO: create common currency formatter.
-const formatValueWithCurrencySign = (value: string | number): string => Intl.NumberFormat('de-DE', { style: 'currency', currency: props.currency || 'EUR'  }).format(+value || 0);
-const details = { amount: formatValueWithCurrencySign(amount), period, payment: formatValueWithCurrencySign(payment)};
+const details = { amount: formatCurrency(amount, props.currency), period, payment: formatCurrency(payment, props.currency)};
 
 
 </script>
