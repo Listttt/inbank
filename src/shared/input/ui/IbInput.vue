@@ -24,7 +24,7 @@ const validate = (event: FocusEvent) => {
     if(!!props.validation) {
       isValid.value = true;
       //@ts-ignore
-      const value = event?.target.value;
+      const value = event?.target.value || input?.value?.value;
       for (let validation of props.validation) {
         isValid.value = validation(value);
 
@@ -58,7 +58,9 @@ const showMessage = ref(computed(() => {
 
 defineExpose({
   validate,
-  isValid
+  isValid,
+  valid: computed(() => typeof isValid.value != "string"),
+  invalid: computed(() => typeof isValid.value === "string")
 })
 </script>
 

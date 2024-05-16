@@ -70,10 +70,11 @@ import {IbCalculatorWidget} from "@/widgets/calculator";
 .ib-calculator {
   position: absolute;
   left: 0;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   background: #E3D2FF;
+  //height: -webkit-fill-available;
 }
 
 </style>

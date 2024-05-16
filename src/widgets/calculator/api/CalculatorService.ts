@@ -20,7 +20,8 @@ export class CalculatorService extends BaseService {
                         max: 15000,
                         periods: [6, 12, 18, 24, 30, 36],
                         percent: 7,
-                        commission: 0.2
+                        commission: 0.2,
+                        currency: 'EUR'
                     };
                     break;
                 }

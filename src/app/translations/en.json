@@ -57,6 +57,13 @@
       },
       "dialog": {
         "topic": "Personal details"
+      },
+      "input": {
+        "amount": {
+          "validation": {
+            "error": "Entered amount is out of bounds for offered range"
+          }
+        }
       }
     }
   },

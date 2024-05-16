@@ -6,12 +6,13 @@ const service: CalculatorService = new CalculatorService();
 
 const dynamicRoutesStore = useDynamicRoutesStore();
 
-interface CalculatorDataInterface {
+export interface CalculatorDataInterface {
    min: number;
    max: number;
    periods: Array<number>;
    percent: number;
    commission: number;
+   currency: CurrencyType
 }
 
 type CurrencyType = 'EUR';

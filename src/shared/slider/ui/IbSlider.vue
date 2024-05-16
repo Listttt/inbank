@@ -9,7 +9,7 @@ const slider: Ref<HTMLInputElement> = ref<HTMLInputElement>(null as unknown as H
 onMounted(() => {
   function drawProgress(slider: HTMLInputElement): void {
     const progress: number = (+slider.value - +slider.min) / (+slider.max - +slider.min) * 100;
-    slider.style.background = 'linear-gradient(to right, #21093A 0%, #21093A '+ progress + '%, #fff ' + progress + '%, #fff 100%)'
+    slider.style.background = 'linear-gradient(to right, #21093A 0%, #21093A '+ progress + '%,  rgba(33, 9, 58, 0.1) ' + progress + '%, rgba(33, 9, 58, 0.1) 100%)'
   }
    slider.value.oninput = function () {
      const self: HTMLInputElement = this as HTMLInputElement;
