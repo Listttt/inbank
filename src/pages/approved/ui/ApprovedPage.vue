@@ -53,11 +53,13 @@ const details = { amount: formatValueWithCurrencySign(amount), period, payment: 
 
 <!--          TODO: component-->
           <div class="card-message-section_details">
-            <ib-detail-record-widget v-for="([key, value], i) in Object.entries(details)"
-                                     context="page.approved.info-card.detail"
-                                     :value="value as string | number"
-                                     :t-key="key"
-                                     :key="i"
+            <ib-detail-record-widget
+                v-for="([key, value], i) in Object.entries(details)"
+                class="card-message-section_details_record"
+                :key="i"
+                context="page.approved.info-card.detail"
+                :value="value as string | number"
+                :t-key="key"
             />
           </div>
           <ib-button class="ib-button" @click="dynamicRoutesStore.removeDynamicRoute($route.name as string), $router.push({name: ROUTE_NAMES.HOME})">
@@ -122,12 +124,22 @@ const details = { amount: formatValueWithCurrencySign(amount), period, payment: 
   align-items: center;
   gap: 40px;
   padding: clamp(1rem, -7.921rem + 18.538vw, 9.875rem) clamp(1rem, -4.403rem + 11.227vw, 6.375rem);
+
+  @media (max-width: 770px) {
+    min-width: 100%;
+  }
 }
 
 .card-message-section_details {
   display: flex;
   width: 100%;
   flex-direction: column;
+  border-top: 1px solid rgba(33, 9, 58, 0.3);
+}
+
+.card-message-section_details_record {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(33, 9, 58, 0.3);
 }
 
 .ib-image {

@@ -4,6 +4,11 @@
     "submit": "Submit",
     "exit": "Exit"
   },
+  "shared": {
+    "months": {
+      "number": "{value} months"
+    }
+  },
   "card": {
     "lines": {
       "first": "Mini loan",
@@ -13,7 +18,7 @@
   },
   "select": {
     "options": {
-      "period": "{value} months"
+      "period": "@:shared.months.number"
     }
   },
   "entities": {
@@ -24,8 +29,8 @@
   "widget":{
     "calculator": {
       "range": {
-        "min": "@:select.options.period",
-        "max": "@:select.options.period"
+        "min": "@:shared.months.number",
+        "max": "@:shared.months.number"
       },
       "button": {
         "apply": "@:common.apply now"
@@ -52,7 +57,7 @@
           "amount": "Loan amount",
           "amount-value": "{value}",
           "period": "Loan period",
-          "period-value": "{value} months",
+          "period-value": "@:shared.months.number",
           "payment": "Monthly payment",
           "payment-value": "{value}"
         }
