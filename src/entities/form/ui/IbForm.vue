@@ -25,9 +25,8 @@ interface PayloadInterface {
 }
 interface FormPropsInterface {
   formData: Array<FormDataInterface>
-  // submit: FormSubmitInterface;
-  //TODO: add text for button
   submit: ([payload]?: any) => Promise<any> | any;
+  context?: string;
 }
 const props = defineProps<FormPropsInterface>();
 function onSubmit() {
@@ -45,6 +44,7 @@ const disabled = computed(() => {
 <form @submit.prevent="onSubmit">
   <ib-input v-for="(input, index) in formData"
             :ref="el => !el || inputs.push(el)"
+            :context="context"
             :key="index"
             :label="input.label"
             :type="input.type"

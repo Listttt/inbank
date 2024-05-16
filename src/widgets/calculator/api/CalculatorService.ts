@@ -45,13 +45,13 @@ export class CalculatorService extends BaseService {
                 case "/calculator/v1/claim": {
                     result = error.response as AxiosResponse;
 
-                    const {amount} = JSON.parse(error!.config!.data);
+                    const {income} = JSON.parse(error!.config!.data);
 
                     const MIN_REQUIRED_AMOUNT = 1000;
                     // Drop undefined record ('reason' for approved decision)
                     result.data = JSON.parse(JSON.stringify({
-                        decision: amount > MIN_REQUIRED_AMOUNT ? 'approved' : 'rejected',
-                        reason: amount > MIN_REQUIRED_AMOUNT ? undefined: 'income'
+                        decision: income > MIN_REQUIRED_AMOUNT ? 'approved' : 'rejected',
+                        reason: income > MIN_REQUIRED_AMOUNT ? undefined: 'income'
                     }));
                     break;
                 }

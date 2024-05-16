@@ -2,7 +2,9 @@
   "common": {
     "apply": "Apply",
     "submit": "Submit",
-    "exit": "Exit"
+    "exit": "Exit",
+    "email": "E-Mail",
+    "required": "Required"
   },
   "shared": {
     "months": {
@@ -31,6 +33,20 @@
       "range": {
         "min": "@:shared.months.number",
         "max": "@:shared.months.number"
+      },
+      "form": {
+        "name": "First name",
+        "lastname": "Last name",
+        "phone": "Mobile number",
+        "email": "@:common.email",
+        "income": "Monthly income",
+        "validation": {
+          "required": "@:common.required",
+          "number-size": "Number should contain 7 or 8 signs",
+          "number-start": "Number should start with '55'",
+          "email": "Wrong E-Mail format",
+          "poor": "More gold is required!"
+        }
       },
       "button": {
         "apply": "@:common.apply now"

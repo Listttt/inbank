@@ -11,7 +11,8 @@ const input = ref(null);
 
 interface InputPropsInterface {
   label: string;
-  validation?: Array<([val]: any) => boolean | string>
+  validation?: Array<([val]: any) => boolean | string>,
+  context?: string
 }
 
 const props = defineProps<InputPropsInterface>();
@@ -28,6 +29,9 @@ const validate = (event: FocusEvent) => {
         isValid.value = validation(value);
 
         if(typeof isValid.value != 'boolean') {
+          if(!!props.context) {
+            isValid.value = props.context.concat('.validation.').concat(isValid.value);
+          }
           break;
         }
       }
@@ -69,7 +73,7 @@ defineExpose({
     <input
         ref="input"
         @blur="validate"
-        :placeholder="t(label)"
+        :placeholder="t(context?.concat('.').concat(label) || label)"
         name="ib-input"
         v-model="model"
         class="ib-input"
@@ -85,6 +89,7 @@ defineExpose({
 
 <style scoped>
 .ib-input {
+  outline: none;
   width: 100%;
   height: 48px;
   border: 1px solid #60378B;

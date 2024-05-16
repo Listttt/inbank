@@ -98,7 +98,6 @@ const details = { amount: formatValueWithCurrencySign(amount), period, payment: 
     flex-wrap: wrap;
     justify-content: center;
   }
-
 }
 
 .card-image-section {

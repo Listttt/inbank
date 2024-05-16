@@ -59,17 +59,9 @@ const watchForPeriod = watch(calcData, ({periods}) => {
   watchForPeriod();
 });
 
-
-
-
-
-
 const router = useRouter();
 const apply = () => {
   dialog.value.show();
-
-  // router.addRoute('MAIN', { path: 'test', component: HomePage })
-  // router.push('/test')
 }
 </script>
 
@@ -90,36 +82,22 @@ const apply = () => {
     <ib-select v-model.number="period" :options="periodOptions"/>
     {{payment}}
 
-
-<!--    <dialog-->
-<!--        class="ib-dialog"-->
-<!--        open-->
-<!--        ref="dialog"-->
-<!--    >-->
-<!--      test-->
-<!--    </dialog>-->
-<!--    <Teleport to="body">-->
       <ib-dialog ref="dialog">
-        <ib-form :form-data="[
-            {label: 'name', type: 'text', value: 'val', validation: [(val) => {return val === 'test' || 'test'}]},
-            {label: 'amount', type: 'number', value: 'val', validation: [(val) => {return +val === 12 || 'test'}]},
-            ]"
+<!--    TODO: request form data from HOST.-->
+        <ib-form
+            context="widget.calculator.form"
+            :form-data="[
+                    {label: 'name', type: 'text', value: '', validation: [(val) => {return !!val.length || 'required'}]},
+                    {label: 'lastname', type: 'text', value: '', validation: [(val) => {return !!val.length || 'required'}]},
+                    {label: 'phone', type: 'number', value: '', validation: [(val) => {return val.length >= 7 && val.length <= 8|| 'number-size'}, (val) => {return val.startsWith('55') || 'number-start'}]},
+                    {label: 'email', type: 'text', value: '', validation: [(val) => {return !!val?.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g) || 'email'}]},
+                    {label: 'income', type: 'number', value: '', validation: [(val) => {return +val >= 100 || 'poor'}]},
+                 ]"
                  :submit="(payload) => {
                    store.sendRequest(payload).then(() => dialog.close());
-                   // dialog.close();
                  }"
         />
-<!--        <form @submit.prevent="dialog.close()">-->
-<!--          <ib-input type="text" label="name"/>-->
-<!--          <ib-input type="number" label="amount"/>-->
-<!--          <ib-button type="submit" label="submit">-->
-<!--            <ib-translated-text class="ib-translated-text" t-key="widget.calculator.button.apply"/>-->
-<!--          </ib-button>-->
-<!--        </form>-->
       </ib-dialog>
-<!--    </Teleport>-->
-
-
     <ib-button @click="apply">
       <ib-translated-text class="ib-translated-text" t-key="widget.calculator.button.apply"/>
     </ib-button>
