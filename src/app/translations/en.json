@@ -30,6 +30,10 @@
   },
   "widget":{
     "calculator": {
+      "text": {
+        "message": "Calculate your <i>monthly payment</i>",
+        "details": "Estimate your monthly payments based on the chosen load amount and time period"
+      },
       "range": {
         "min": "@:shared.months.number",
         "max": "@:shared.months.number"
