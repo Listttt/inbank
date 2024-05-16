@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import {IbSlider} from "@/shared/slider";
 import {IbInput} from "@/shared/input";
+import {IbSelect} from "@/shared/select";
+import {IbTranslatedText} from "@/entities/translated-text";
+import {IbButton} from "@/shared/button";
+import {IbDialog} from "@/shared/dialog";
+import {IbForm} from "@/entities/form";
 import {useCalculatorStore} from "@/widgets/calculator";
 import {computed, reactive, watch, ref, onMounted} from "vue";
 import type {Ref} from "vue";
 import {watchDebounced} from "@vueuse/core";
-import {IbSelect} from "@/shared/select";
-import IbTranslatedText from "@/entities/translated-text/ui/IbTranslatedText.vue";
 import {useRouter} from "vue-router";
-//TODO: remove it
-// import {HomePage} from "@/pages/home";
-import {IbButton} from "@/shared/button";
-import {IbDialog} from "@/shared/dialog";
-import IbForm from "@/entities/form/ui/IbForm.vue";
 
 const dialog: Ref<HTMLDialogElement> = ref<HTMLDialogElement>(null as unknown as HTMLDialogElement);
 
@@ -44,8 +42,6 @@ watchDebounced(period, (value: number | undefined) => {
     },
     {debounce:300}
 )
-// TODO: on button
-
 
 // TODO: bring proper interface Ref<Array<CalculatorOptionsInterface>>
 let periodOptions: Ref<Array<any>> = ref([]);
@@ -83,6 +79,17 @@ const apply = () => {
     {{payment}}
 
       <ib-dialog ref="dialog">
+        <div class="ib-dialog_topic">
+          <span class="inter-medium">
+            <ib-translated-text t-key="widget.calculator.dialog.topic"/>
+          </span>
+          <span
+              @click="dialog.close()"
+              class="close-dialog"
+          />
+
+
+        </div>
 <!--    TODO: request form data from HOST.-->
         <ib-form
             context="widget.calculator.form"
@@ -112,5 +119,25 @@ const apply = () => {
   align-items: center;
   padding: 20px;
   border-radius: 30px;
+}
+
+
+.ib-dialog_topic {
+  width: clamp(22.5rem, 11.191rem + 23.499vw, 33.75rem);
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 770px) {
+    width: 100%;
+  }
+
+}
+
+.close-dialog {
+  background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYgNkwxOCAxOE0xOCA2TDYgMTgiIHN0cm9rZT0iIzIxMDkzQSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 24px;
+  cursor: pointer;
 }
 </style>

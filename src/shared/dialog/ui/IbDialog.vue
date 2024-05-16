@@ -35,5 +35,14 @@ defineExpose({
   padding: 40px;
   border-radius: 30px;
   border: 0px;
+
+  @media (max-width: 770px) {
+    bottom: 0;
+    position: sticky;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    min-width: 100%;
+    padding: 24px;
+  }
 }
 </style>

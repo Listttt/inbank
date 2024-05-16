@@ -105,6 +105,15 @@ body {
   color: #21093A;
 }
 
+.inter-medium {
+  font-family: "Inter", serif;
+  font-weight: 500 !important;
+  font-size: 20px !important;
+  line-height: 28px !important;
+  text-align: center;
+  color: #21093A;
+}
+
 .font-size-14 {
   font-size: 14px !important;
 }

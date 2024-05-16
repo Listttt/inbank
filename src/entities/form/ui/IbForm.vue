@@ -41,21 +41,21 @@ const disabled = computed(() => {
 </script>
 
 <template>
-<form @submit.prevent="onSubmit">
-  <ib-input v-for="(input, index) in formData"
-            :ref="el => !el || inputs.push(el)"
-            :context="context"
-            :key="index"
-            :label="input.label"
-            :type="input.type"
-            :validation="input.validation as Array<([val]: any) => boolean | string>"
-            v-model="input.value"
-            class="ib-form-input"
-  />
-  <ib-button :disabled="disabled" type="submit">
-    <ib-translated-text t-key="entities.form.submit"/>
-  </ib-button>
-</form>
+  <form @submit.prevent="onSubmit">
+    <ib-input v-for="(input, index) in formData"
+              :ref="el => !el || inputs.push(el)"
+              :context="context"
+              :key="index"
+              :label="input.label"
+              :type="input.type"
+              :validation="input.validation as Array<([val]: any) => boolean | string>"
+              v-model="input.value"
+              class="ib-form-input"
+    />
+    <ib-button class="ib-button" :disabled="disabled" type="submit">
+      <ib-translated-text t-key="entities.form.submit"/>
+    </ib-button>
+  </form>
 </template>
 
 <style scoped>
@@ -63,4 +63,7 @@ const disabled = computed(() => {
   margin: 16px 0 !important;
 }
 
+.ib-button {
+  width: 100%;
+}
 </style>

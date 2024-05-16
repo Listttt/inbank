@@ -50,6 +50,9 @@
       },
       "button": {
         "apply": "@:common.apply now"
+      },
+      "dialog": {
+        "topic": "Personal details"
       }
     }
   },
