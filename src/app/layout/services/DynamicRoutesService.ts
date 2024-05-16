@@ -20,7 +20,6 @@ export const useLayoutService = () => {
                 }
                 else if (actionName === 'removeDynamicRoute') {
                      $router.removeRoute(path);
-                     $router.go(-1);
                 }
 
                 break;

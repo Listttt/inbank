@@ -3,6 +3,7 @@ import {IbInfoCard} from "@/widgets/info-card";
 import {IbTranslatedText} from "@/entities/translated-text";
 import {IbButton} from "@/shared/button";
 import {useDynamicRoutesStore} from "@/features/dynamic-routes";
+import {ROUTE_NAMES} from "@/shared/config";
 
 interface RejectedPagePropsInterface{
   name: string;
@@ -35,7 +36,7 @@ defineProps<RejectedPagePropsInterface>();
           <hr>
         </div>
 
-        <ib-button class="ib-button" @click="dynamicRoutesStore.removeDynamicRoute($route.name)">
+        <ib-button class="ib-button" @click="dynamicRoutesStore.removeDynamicRoute($route.name as string), $router.push({name: ROUTE_NAMES.HOME})">
           <ib-translated-text t-key="page.rejected.button"/>
         </ib-button>
       </ib-info-card>
@@ -64,6 +65,11 @@ defineProps<RejectedPagePropsInterface>();
   gap: 40px;
   align-items: center;
   padding: clamp(2.5rem, -0.013rem + 5.222vw, 5rem) clamp(1rem, -10.811rem + 24.543vw, 12.75rem);
+
+  @media (max-width: 770px) {
+    height: 100%;
+    justify-content: start;
+  }
 }
 
 .ib-button {

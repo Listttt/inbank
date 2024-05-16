@@ -74,6 +74,8 @@ export const useCalculatorStore = defineStore('calculator',{
             return api.service.claim({...payload, payment: this.$state.offer.payment}).then(({decision, reason}) => {
                 //@ts-ignore
                 dynamicRoutesStore.addDynamicRoute(decision, {name: payload.name, reason, ...this.$state.offer});
+                //@ts-ignore
+                dynamicRoutesStore.$router.push({name: path});
             })
         }
     }

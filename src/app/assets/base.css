@@ -108,3 +108,8 @@ body {
 .font-size-14 {
   font-size: 14px !important;
 }
+
+.text-48-line-56 {
+  font-size: 48px !important;
+  line-height: 56px !important;
+}

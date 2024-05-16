@@ -43,6 +43,21 @@
         }
       },
       "button": "@:common.exit"
+    },
+    "approved": {
+      "info-card": {
+        "congratulation": "<i>Good</i> news!",
+        "message": "Your loan has been approved.",
+        "detail": {
+          "amount": "Loan amount",
+          "amount-value": "{value}",
+          "period": "Loan period",
+          "period-value": "{value} months",
+          "payment": "Monthly payment",
+          "payment-value": "{value}"
+        }
+      },
+      "button": "Back to home page"
     }
   }
 }
