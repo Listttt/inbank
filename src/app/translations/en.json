@@ -30,6 +30,9 @@
     }
   },
   "widget":{
+    "card": {
+      "button": "@:common.apply now"
+    },
     "calculator": {
       "output": {
         "payment": "@:shared.payment",

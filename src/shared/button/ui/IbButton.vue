@@ -5,6 +5,7 @@ interface ButtonPropsInterface {
 }
 
 const props = defineProps<ButtonPropsInterface>();
+
 </script>
 
 <template>
@@ -29,6 +30,7 @@ const props = defineProps<ButtonPropsInterface>();
 }
 
 .ib-button:hover {
+  cursor: pointer;
   background: #BBA8FF;
 }
 

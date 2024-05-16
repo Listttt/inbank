@@ -1,6 +1,16 @@
 <script setup lang="ts">
 
 import {IbTranslatedText} from "@/entities/translated-text";
+import {IbButton} from "@/shared/button";
+
+let click = () => {};
+const onClick = (fn: () => {}) => click = fn;
+
+defineExpose(
+    {
+      onClick
+    }
+)
 </script>
 
 <template>
@@ -14,6 +24,10 @@ import {IbTranslatedText} from "@/entities/translated-text";
     <div class="inter-400">
       <ib-translated-text t-key="card.lines.third"/>
     </div>
+
+    <ib-button class="ib-button" @click="click()">
+      <ib-translated-text t-key="widget.card.button"/>
+    </ib-button>
   </div>
 </template>
 
@@ -29,4 +43,8 @@ import {IbTranslatedText} from "@/entities/translated-text";
   padding: clamp(4rem, -6.775rem + 22.389vw, 14.719rem) clamp(1.5rem, 0.495rem + 2.089vw, 2.5rem);
 }
 
+.ib-button {
+  margin: 24px 0 0;
+  background: #F0F0EA !important;
+}
 </style>

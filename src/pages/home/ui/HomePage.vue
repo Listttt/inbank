@@ -2,13 +2,26 @@
 import {IbImage} from "@/shared/image";
 import {IbCardWidget} from "@/widgets/card";
 import {IbCalculatorWidget} from "@/widgets/calculator";
+import {onMounted, ref} from "vue";
+
+const cardWidget = ref(null);
+const calculatorWidget = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  //@ts-ignore
+  cardWidget.value?.onClick(function() {
+    calculatorWidget.value?.scrollIntoView({behavior: 'smooth'})
+  });
+})
+
+
 </script>
 
 <template>
   <main class="ib-container">
     <div class="ib-content">
       <div class="ib-card">
-        <ib-card-widget/>
+        <ib-card-widget ref="cardWidget"/>
       </div>
       <div class="ib-image">
         <ib-image
@@ -16,7 +29,7 @@ import {IbCalculatorWidget} from "@/widgets/calculator";
         />
       </div>
     </div>
-    <div class="ib-calculator">
+    <div ref="calculatorWidget" class="ib-calculator">
       <ib-calculator-widget/>
     </div>
   </main>
