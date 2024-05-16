@@ -1,18 +1,81 @@
 <script setup lang="ts">
+// TODO: to much logic for simple ui, probably need to move into entities slice according FSD
 import {useI18n} from "vue-i18n";
-import {defineProps} from "vue";
+import {computed, defineProps, reactive, ref, nextTick} from "vue";
+import type {Ref} from "vue";
 const model = defineModel();
 
 const {t} = useI18n();
 
-export interface InputPropsInterface {
+const input = ref(null);
+
+interface InputPropsInterface {
   label: string;
+  validation?: Array<([val]: any) => boolean | string>
 }
-defineProps<InputPropsInterface>();
+
+const props = defineProps<InputPropsInterface>();
+
+// TODO: refactor KISS
+let isValid: Ref<boolean | string> = ref(true)
+
+const validate = (event: FocusEvent) => {
+    if(!!props.validation) {
+      isValid.value = true;
+      //@ts-ignore
+      const value = event?.target.value;
+      for (let validation of props.validation) {
+        isValid.value = validation(value);
+
+        if(typeof isValid.value != 'boolean') {
+          break;
+        }
+      }
+    }
+
+  return isValid;
+}
+
+
+const showMessage = ref(computed(() => {
+  //FIX: for correct value reflecting on input after triggering message div.
+  //@ts-ignore
+      const saveValue = input?.value?.value;
+
+      nextTick(() => {
+        //@ts-ignore
+        if(saveValue) input!.value!.value = saveValue;
+      })
+
+      //@ts-ignore
+      return typeof isValid.value === "string"
+    }
+));
+
+defineExpose({
+  validate,
+  isValid
+})
 </script>
 
 <template>
-    <input :placeholder="t(label)" name="ib-input" v-model="model" class="ib-input">
+
+  <div>
+    <input
+        ref="input"
+        @blur="validate"
+        :placeholder="t(label)"
+        name="ib-input"
+        v-model="model"
+        class="ib-input"
+        v-bind="$attrs"
+    />
+    <div
+        v-if="showMessage"
+    >
+      {{t(isValid as string)}}
+    </div>
+  </div>
 </template>
 
 <style scoped>

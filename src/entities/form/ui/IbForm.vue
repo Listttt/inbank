@@ -40,7 +40,9 @@ function onSubmit() {
             :key="index"
             :label="input.label"
             :type="input.type"
+            :validation="input.validation as Array<([val]: any) => boolean | string>"
             v-model="input.value"
+            class="ib-form-input"
   />
   <ib-button type="submit">
     <ib-translated-text t-key="entities.form.submit"/>
@@ -49,5 +51,8 @@ function onSubmit() {
 </template>
 
 <style scoped>
+.ib-form-input {
+  margin: 16px 0 !important;
+}
 
 </style>
