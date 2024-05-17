@@ -1,6 +1,20 @@
 # inbank
 
+In project used:
++ Vite
++ Vue 3 Composition Api
++ Vue router
++ Vue i18n
++Pinia
++ Axios
+
+Methodology: 
+ + [FSD](https://feature-sliced.design/docs/get-started/overview)
+
 This template should help get you started developing with Vue 3 in Vite.
+
+Node version: v18.19.0
+NPM version: 10.2.3
 
 ## Recommended IDE Setup
 
@@ -32,14 +46,10 @@ npm run dev
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### Preview builded application
 
 ```sh
-npm run test:unit
+npm run preview
 ```
 
-### Lint with [ESLint](https://eslint.org/)
 
-```sh
-npm run lint
-```
